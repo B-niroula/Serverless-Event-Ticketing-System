@@ -12,6 +12,7 @@ backend:
     build:
       commands:
         - "# Execute Amplify CLI with the helper script"
+        - export AMPLIFY_CLI_ENABLE_TRANSFORMER_V1=true
         - amplifyPush --simple
         ##
         # Extract Environment data
