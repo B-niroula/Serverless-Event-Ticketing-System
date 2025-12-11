@@ -115,8 +115,8 @@ export.parameter:
 _install_os_packages:
 	$(info [*] Checking jq availability...)
 	@which jq || echo "jq not found but may not be needed"
-	$(info [*] Upgrading Python SAM CLI and CloudFormation linter to the latest version...)
-	python3 -m pip install --upgrade --user cfn-lint aws-sam-cli
+	$(info [*] Installing SAM CLI and CloudFormation linter...)
+	@echo "Skipping pip upgrades to avoid AWS CLI conflicts in Amplify environment"
 
 define HELP_MESSAGE
 
