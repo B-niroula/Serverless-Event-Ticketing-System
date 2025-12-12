@@ -3,15 +3,21 @@ backend:
   phases:
     preBuild:
       commands:
+        - export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
         - nvm install 16
         - nvm use 16
         - node -v
-        - npm install -g @aws-amplify/cli@4.13.1
-        - npm install -g amplify-provider-awscloudformation@4.13.1
+        - npm install -g @aws-amplify/cli@14.2.3
         - make init # install OS packages  and dev tools (awscli, sam-cli, linters, etc.)
         - aws configure set cli_follow_urlparam false # fix for parameter store when storing URLs: https://github.com/aws/aws-cli/issues/2507
     build:
       commands:
+        - export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+        - nvm use 16
+        - node -v
+        - export AMPLIFY_CLI_PLUGINS_PATH=$(npm root -g)
+        - amplify plugin scan
+        - amplify --version
         - "# Execute Amplify CLI with the helper script"
         - amplifyPush --simple
         ##
@@ -52,6 +58,7 @@ frontend:
   phases:
     preBuild:
       commands:
+        - export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
         - nvm use 16
         - node -v
         - cd src/frontend
