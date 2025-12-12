@@ -1,0 +1,9 @@
+{
+  "features": {
+    "graphqltransformer": {
+      "transformerversion": 1,
+      "useexperimentalpipelinedtransformer": false,
+      "suppressschemavalidationwarning": true
+    }
+  }
+}
